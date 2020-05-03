@@ -9,7 +9,7 @@ More Information about ESS can be found here:
 On GitHub: https://github.com/essfeed
 On Youtube: https://www.youtube.com/watch?v=OGi0U3Eqs6E
 
-This Wordpress Plugin depends on the "Events Interface" Wordpress Plugin. Before this plugin can be installed the "Events Interface" Plugin should be installed und activated.
+This Wordpress Plugin depends on the ["Events Interface"](https://github.com/kartevonmorgen/events-interface) Wordpress Plugin. Before this plugin can be installed the "Events Interface" Plugin should be installed und activated.
 
 The output of the Feed can be found https://www.yourwebsite.xx/?em_ess=1
 
