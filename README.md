@@ -1,6 +1,8 @@
 # ESS Event Calendar Client
 
-Transport events from your WordPress Event Calendar to an ESS-Feed. ESS-Feeds are like RSS-Feeds, but especially made for events.
+Transport events from your WordPress Event Calendar to an ESS-Feed. 
+
+ESS-Feeds are like RSS-Feeds, but especially made for events.
 
 More Information about ESS can be found here: 
 
