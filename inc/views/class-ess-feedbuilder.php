@@ -240,9 +240,15 @@ final class ESSFeedBuilder
 
   private function setPlaces($essFeed, $event, $newEvent)
   {
-		$name = $event->get_location_name();
-		$address = $event->get_location_address();
-    $country = $event->get_location_country();
+    $location = $event->get_location();
+		if ( empty ($location) ) 
+    {
+      return;
+    } 
+
+		$name = $location->get_name();
+		$address = $location->get_address();
+    $country = $location->get_country();
 
 		if ( empty ($name) ) 
     {
@@ -255,10 +261,10 @@ final class ESSFeedBuilder
           'latitude'  => '',
           'longitude' => '',
           'address'   => ((strlen($address)>0) ? $address : $name),
-          'city' => $event->get_location_city(),
-          'zip' => $event->get_location_zip(),
-          'state' => $event->get_location_state(),
-          'state_code' => $event->get_location_state(),
+          'city' => $location->get_city(),
+          'zip' => $location->get_zip(),
+          'state' => $location->get_state(),
+          'state_code' => $location->get_state(),
           'country'	=> FeedValidator::$COUNTRIES_[ strtoupper($country) ],
           'country_code' => ((strtolower($country) == 'xe' ) ?'':$country)
           ));
