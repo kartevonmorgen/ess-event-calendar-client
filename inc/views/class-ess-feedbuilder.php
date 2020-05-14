@@ -248,7 +248,7 @@ final class ESSFeedBuilder
 
 		$name = $location->get_name();
 		$address = $location->get_address();
-    $country = $location->get_country();
+    $countrycode = $location->get_country_code();
 
 		if ( empty ($name) ) 
     {
@@ -265,8 +265,8 @@ final class ESSFeedBuilder
           'zip' => $location->get_zip(),
           'state' => $location->get_state(),
           'state_code' => $location->get_state(),
-          'country'	=> FeedValidator::$COUNTRIES_[ strtoupper($country) ],
-          'country_code' => ((strtolower($country) == 'xe' ) ?'':$country)
+          'country'	=> FeedValidator::$COUNTRIES_[ strtoupper($countrycode) ],
+          'country_code' => ((strtolower($countrycode) == 'xe' ) ?'':$countrycode)
           ));
   }
 	  
