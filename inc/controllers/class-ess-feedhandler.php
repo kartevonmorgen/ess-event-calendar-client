@@ -97,7 +97,7 @@ class ESSFeedHandler
 		if ( preg_match( '/^\/?em_ess\/?$/', $_SERVER['REQUEST_URI']) || !empty( $_REQUEST[ ESSFeedHandler::EM_ESS_ARGUMENT ] ) )
     {
       
-      $cat = ( isset( $_REQUEST[ 'event_cat'] ) )? $_REQUEST[ 'event_cat'] : ''; 
+      $cat = ( isset( $_REQUEST[ 'cat'] ) )? $_REQUEST[ 'cat'] : ''; 
       $feedBuilder = new ESSFeedBuilder();
       $feedBuilder->output($cat);
       //( ( isset( $_REQUEST[ 'event_id'] ) )? $_REQUEST[ 'event_id'] : '' ),
