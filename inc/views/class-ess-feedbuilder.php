@@ -245,9 +245,10 @@ final class ESSFeedBuilder
     {
       return;
     } 
+    $wpLocHelper = new WPLocationHelper();
 
 		$name = $location->get_name();
-		$address = $location->get_address();
+		$address = $wpLocHelper->get_address($location);
     $countrycode = $location->get_country_code();
 
 		if ( empty ($name) ) 
