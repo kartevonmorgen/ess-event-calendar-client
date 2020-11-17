@@ -9,7 +9,7 @@
   * @license   	GNU/GPLv2, see https://www.gnu.org/licenses/gpl-2.0.html
   * @link		https://github.com/essfeed
   */
-class ESSFeedHandler
+class ESSFeedHandler extends WPPluginStarter
 {
 	const EM_ESS_ARGUMENT 	= 'em_ess';
 
@@ -19,10 +19,10 @@ class ESSFeedHandler
   {
   }
 
-	public function initialize() 
+	public function start() 
   {
     // Init was to early, so we do it after all plugins are loaded
-    add_filter( 'wp_loaded', array( $this, 'start' ));
+    add_filter( 'wp_loaded', array( $this, 'load' ));
 
     add_filter( 'rewrite_rules_array', 
                 array( $this, 'get_rewrite_rules_array'));
@@ -44,50 +44,14 @@ class ESSFeedHandler
 
 	public function set_activation()
 	{
-		flush_rewrite_rules();
-
-		if ( !current_user_can( 'activate_plugins' )) 
-    {
-      return;
-    }
-
-    $plugin = isset( $_REQUEST[ 'plugin' ] ) ? $_REQUEST[ 'plugin' ] : 'ess-event-calendar-client';
-
-    // Checks Permissions
-    check_admin_referer( "activate-plugin_{$plugin}" );
 	}
 
 	public function set_deactivation()
 	{
-		if ( !current_user_can( 'activate_plugins' ) ) 
-    {
-      return;
-    }
-
-    $plugin = isset( $_REQUEST[ 'plugin' ] ) ? $_REQUEST[ 'plugin' ] : 'ess-event-calendar-client';
-
-    // Checks Permissions
-    check_admin_referer( "deactivate-plugin_{$plugin}" );
   }
 
-	public function set_uninstall()
-  {
-    if ( ! current_user_can( 'activate_plugins' ) ) 
-    {
-      return;
-    }
 
-    // Checks Permissions
-    check_admin_referer( 'bulk-plugins' );
-
-		// Important: Check if the file is the one that was registered during the uninstall hook.
-    if ( __FILE__ != WP_UNINSTALL_PLUGIN ) 
-    {
-      return;
-    }
-  }
-
-	function start()
+	function load()
 	{
     // Start UI Part
     $adminControl = ESSAdminControl::get_instance();
