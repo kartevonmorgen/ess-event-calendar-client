@@ -285,17 +285,34 @@ final class ESSFeedBuilder
 
   private function setPeople($essFeed, $event, $newEvent)
   {
-    $name = $event->get_organizer_name();
-		if ( empty( $name ) ) 
+    $name = $event->get_contact_name();
+    if(empty($name))
     {
       return;
-    } 
+    }
+
+    $uri = $event->get_contact_website();
+   
+    if ( !FeedValidator::isValidURL( $uri ) )
+    {
+      $uri = 'https://'. $uri;
+    }
     
+    if ( !FeedValidator::isValidURL( $uri ) )
+    {
+      $uri = null;
+    }
+
+    $email = $event->get_contact_email();
+    if ( !FeedValidator::isValidEmail( $email ) )
+    {
+      $email = null;
+    }
     $newEvent->addPeople( 'organizer', array(
       'name' => $name,
-      'email' => $event->get_organizer_email(),
-      'phone' => $event->get_organizer_phone(),
-      'uri' => $event->get_organizer_website()));
+      'email' => $email,
+      'phone' => $event->get_contact_phone(),
+      'uri' => $uri));
   }
 
   // Export images

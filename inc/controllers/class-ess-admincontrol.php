@@ -83,10 +83,18 @@ class ESSAdminControl
     {
       public function get_value()
       {
-        $eiInterface = EIInterface::get_instance();
-        $events = $eiInterface->get_events_by_cat();
-        $feedBuilder = new ESSFeedBuilder();
-        return $feedBuilder->generateFeed($events);
+        try
+        {
+          $eiInterface = EIInterface::get_instance();
+          $events = $eiInterface->get_events_by_cat();
+          $feedBuilder = new ESSFeedBuilder();
+          return $feedBuilder->generateFeed($events);
+        }
+        catch(Exception $ex)
+        {
+          return $ex->getMessage() . PHP_EOL . 
+            $ex->getTraceAsString();
+        }
       }   
     };
     $field->set_register(false);
