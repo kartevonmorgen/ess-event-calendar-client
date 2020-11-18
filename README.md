@@ -1,4 +1,4 @@
-# ESS Event Calendar Client
+# WP ESS Event Calendar Client
 
 Transport events from your WordPress Event Calendar to an ESS-Feed. 
 
@@ -9,7 +9,7 @@ More Information about ESS can be found here:
 On GitHub: https://github.com/essfeed
 On Youtube: https://www.youtube.com/watch?v=OGi0U3Eqs6E
 
-This Wordpress Plugin depends on the ["Events Interface"](https://github.com/kartevonmorgen/events-interface) Wordpress Plugin. Before this plugin can be installed the "Events Interface" Plugin should be installed und activated.
+This Wordpress Plugin depends on the ["WP Events Interface"](https://github.com/kartevonmorgen/wp-events-interface) Wordpress Plugin. Before this plugin can be installed the "Events Interface" Plugin should be installed und activated.
 
 The output of the Feed can be found https://www.yourwebsite.xx/?em_ess=1
 
